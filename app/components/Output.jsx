@@ -2,7 +2,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 
-const Output = ({hidden, sequence=[""]}) => {
+const Output = ({hidden, sequence}) => {
     const textAreaRef = useRef(null);
     const containerRef = useRef(null)
     const [val, setVal] = useState("");

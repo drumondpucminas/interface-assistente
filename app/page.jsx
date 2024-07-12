@@ -1,27 +1,27 @@
 'use client'
 import { useState, useEffect } from "react";
-import Output from "./components/Output";
-import Prompt from "./components/Prompt";
+
 import Input from "./components/Input";
+import Interaction from "./components/Interaction";
 export default function Home() {
   const [isHidden, setIsHidden] = useState(true)
+  const [inputData, setInputData] = useState('')
+
+  function handleMessage(data) {
+    setInputData(data)
+  }
   
 
   return (
     <div className="min-h-screen p-3 w-full flex flex-col items-center">
-      <div className=" flex flex-col p-5  w-full min-h-[33rem] overflow-y-auto max-h-80  ">
-
-        <div className=" p-4  w-full min-h-[10rem] flex justify-end ">
-          <Prompt />
-        </div>
-        <div className=" w-full min-h-20 p-4">
-          <Output hidden={isHidden} sequence={[""]} />
-        </div>  
+      <div className=" flex flex-col p-5  w-full min-h-[33rem] overflow-y-auto max-h-80 bg-blue-600 ">
+            <Interaction userMessage={inputData} answer={"This is a sample AI answer This is a sample AI answer This is a sample AI answer"} /> 
+        
 
       </div>
 
       <div className=" p-4 w-full h-fit flex justify-center items-center ">
-        <Input />
+        <Input sendData={handleMessage} />
       </div>
 
 

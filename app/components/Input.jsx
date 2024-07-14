@@ -9,6 +9,7 @@ const Input = ({sendData}) => {
 
     //Try textAreaRef.current.value if error
     sendData(val)
+    textAreaRef.current.innerText = ''
 
   }
 
@@ -16,7 +17,7 @@ const Input = ({sendData}) => {
 
 
 
-  const [val, setVal] = useState(null);
+  const [val, setVal] = useState("");
   const handleChange = (e) => {
     setVal(e.target.value);
     

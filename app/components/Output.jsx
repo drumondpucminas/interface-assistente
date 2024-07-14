@@ -13,6 +13,7 @@ const Output = ({hidden, sequence}) => {
     useEffect(() => {
       const newHeight = textAreaRef.current.style.height
       containerRef.current.style.height = newHeight
+      containerRef.current.scrollTop = containerRef.current.height
      
     }, [val])
   

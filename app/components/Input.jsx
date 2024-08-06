@@ -4,18 +4,18 @@ import { BiMailSend } from "react-icons/bi";
 
 const Input = ({sendData}) => {
   const textAreaRef = useRef(null);
-  
   function submit() {
-
     //Try textAreaRef.current.value if error
     sendData(val)
     textAreaRef.current.innerText = ''
 
   }
-
-
-
-
+  const onEnter = (e) =>{
+    if (e.keyCode == 13 && e.shiftKey == false) {
+      e.preventDefault()
+      submit()
+    }
+  }
 
   const [val, setVal] = useState("");
   const handleChange = (e) => {
@@ -69,7 +69,7 @@ const Input = ({sendData}) => {
 
   return (
       <div className='text-neutral-200 bg-input-field-color p-2 w-[30rem] rounded-2xl flex items-end justify-between '>
-        <textarea className='w-[28rem] p-1 bg-transparent resize-none active:outline-none focus:outline-none rounded' placeholder='Como posso ajudar?' value={val} onChange={handleChange}rows="1" ref={textAreaRef} ></textarea>
+        <textarea onKeyDown={onEnter} className='w-[28rem] p-1 bg-transparent resize-none active:outline-none focus:outline-none rounded' placeholder='Como posso ajudar?' value={val} onChange={handleChange}rows="1" ref={textAreaRef} ></textarea>
         <div onClick={submit}>
            <BiMailSend opacity={0.5} size={35}/>
 

@@ -12,7 +12,7 @@ export default function Home() {
 
   async function handleMessage(data) {
     try {
-      let contextWindow = JSON.parse(localStorage.getItem("context-window"))
+      var contextWindow = JSON.parse(localStorage.getItem("context-window"))
 
       const chat_history = [
         { content: data, type: "human" } 
@@ -31,18 +31,29 @@ export default function Home() {
         },
         body: JSON.stringify({ userInput: data, history: contextWindow }),
       });
-      const answer = await response.json()
-      console.log(answer)
+      var answer;
+      
+      answer = await response.json()
 
       
+      
+
+      
+
+      
+    } catch (error) {
+      answer = "Desculpe, não foi possível realizar sua pergunta. Tente novamente."
+      
+      
+      
+    } finally {
+
       const newInteraction = <Interaction isOutputHidden={isHidden} userMessage={data} answer={answer} />
       setInteractions(prevInteractions => [...prevInteractions, newInteraction]);
 
       contextWindow.push({content: answer, type: "ai"})
       localStorage.setItem("context-window", JSON.stringify(contextWindow))
-      
-    } catch (error) {
-      
+
     }
     
 

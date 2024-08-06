@@ -7,7 +7,7 @@ const Input = ({sendData}) => {
   function submit() {
     //Try textAreaRef.current.value if error
     sendData(val)
-    textAreaRef.current.innerText = ''
+    setVal('')
 
   }
   const onEnter = (e) =>{
